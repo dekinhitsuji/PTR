@@ -1,0 +1,32 @@
+{% extends "polls/base.html" %}
+
+{% block head %}
+<a class="navbar-brand" href="/">登録フォーム</a>
+
+{% endblock %}
+
+{% block main %}
+
+<h1 class="m-5">下記に情報を入力して下さい。</h1>
+
+<form method="POST" novalidate>
+  {% csrf_token %}
+  <div style="text-align:center; margin:0 auto;">
+    {% for field in form %}
+    <div class="field mx-auto center-block m-5" >
+      <p>
+        <label class="col-form-label">{{ field.label_tag }}</label>
+        <filed>{{ field }}</filed>
+      </p>
+
+    </div>
+    {% endfor %}
+
+
+    <button type="submit" class="btn btn-info">送信</button>
+  </div>
+
+</form>
+<p>{{ message }}</p>
+
+{% endblock %}
